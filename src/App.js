@@ -27,6 +27,7 @@ function App() {
 
 	return (
 		<>
+			{/* Add routes to root and about page */}
 			<Router>
 				<Header />
 				<div className='container'>

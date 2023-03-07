@@ -2,7 +2,7 @@ import { FaTimes } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import Card from './shared/Card';
 
-// Main feedback item component with a prop of 'item;
+// Main feedback item component with props 'item' and 'handleDelete';
 function FeedbackItem({ item, handleDelete }) {
 	return (
 		<Card>
@@ -16,6 +16,7 @@ function FeedbackItem({ item, handleDelete }) {
 	);
 }
 
+// Feedback Item required to be an object
 FeedbackItem.propTypes = {
 	item: PropTypes.object.isRequired,
 };

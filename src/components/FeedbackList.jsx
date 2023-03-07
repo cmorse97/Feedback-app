@@ -10,12 +10,12 @@ function FeedbackList({ feedback, handleDelete }) {
 		return <p>No Feedback Yet</p>;
 	}
 
-	// Add animation to review cards
 	return (
 		<div className='feedback-list'>
 			<AnimatePresence>
 				{/* Loop through feedback array and display each feedback item */}
 				{feedback.map((item) => (
+					// Add animation to review cards
 					<motion.div
 						key={item.id}
 						initial={{ opacity: 0 }}
@@ -44,6 +44,7 @@ function FeedbackList({ feedback, handleDelete }) {
 	// );
 }
 
+// Set feedback list props typeof to be required
 FeedbackList.propTypes = {
 	feedback: PropTypes.arrayOf(
 		PropTypes.shape({

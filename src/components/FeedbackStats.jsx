@@ -18,6 +18,7 @@ function FeedbackStats({ feedback }) {
 	);
 }
 
+// Set feedback prop required to be an array
 FeedbackStats.propTypes = {
 	feedback: PropTypes.array.isRequired,
 };
