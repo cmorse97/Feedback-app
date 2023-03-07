@@ -25,7 +25,7 @@ Header.defaultProps = {
 	textColor: '#ff6a95',
 };
 
-// Make props values more strict
+// Set text prop type to string
 Header.propTypes = {
 	text: PropTypes.string,
 };

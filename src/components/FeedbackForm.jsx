@@ -4,17 +4,12 @@ import Button from './shared/Button';
 import RatingSelect from './RatingSelect';
 
 function FeedbackForm({ handleAdd }) {
-	// State to handle the text input field
+	// Component state
 	const [text, setText] = useState('');
-
-	// State to handle ratings
 	const [rating, setRating] = useState(10);
-
-	// State to disable button until 10 chars in input field
 	const [btnDisabled, setBtnDisabled] = useState(true);
 	const [message, setMessage] = useState('');
 
-	// Function that handles the change of the text input field
 	const handleTextChange = (e) => {
 		// Input field validation
 		if (text === '') {
@@ -28,10 +23,12 @@ function FeedbackForm({ handleAdd }) {
 			setBtnDisabled(false);
 		}
 
+		// Set text state to value passed into input field
 		setText(e.target.value);
 	};
 
 	const handleSubmit = (e) => {
+		// Prevent submit request
 		e.preventDefault();
 		if (text.trim().length > 10) {
 			const newFeedback = {
@@ -40,6 +37,7 @@ function FeedbackForm({ handleAdd }) {
 			};
 			handleAdd(newFeedback);
 
+			// Set text back to empty after submit
 			setText('');
 		}
 	};
@@ -61,6 +59,7 @@ function FeedbackForm({ handleAdd }) {
 					</Button>
 				</div>
 
+				{/* If message is true, display message */}
 				{message && <div className='message'>{message}</div>}
 			</form>
 		</Card>
