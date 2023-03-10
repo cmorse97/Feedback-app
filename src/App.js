@@ -8,10 +8,12 @@ import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
+import { FeedbackProvider } from './context/FeedbackContext';
 import AboutIconLink from './components/AboutIconLink';
 
 // Main app component
 function App() {
+	// Bring in feedback data and set that as State
 	const [feedback, setFeedback] = useState(FeedbackData);
 
 	const deleteFeedback = (id) => {
@@ -26,7 +28,7 @@ function App() {
 	};
 
 	return (
-		<>
+		<FeedbackProvider>
 			{/* Add routes to root and about page */}
 			<Router>
 				<Header />
@@ -38,11 +40,8 @@ function App() {
 							element={
 								<>
 									<FeedbackForm handleAdd={addFeedback} />
-									<FeedbackStats feedback={feedback} />
-									<FeedbackList
-										feedback={feedback}
-										handleDelete={deleteFeedback}
-									/>
+									<FeedbackStats />
+									<FeedbackList handleDelete={deleteFeedback} />
 								</>
 							}
 						></Route>
@@ -53,7 +52,7 @@ function App() {
 					<AboutIconLink />
 				</div>
 			</Router>
-		</>
+		</FeedbackProvider>
 	);
 }
 

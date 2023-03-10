@@ -1,10 +1,13 @@
 // Import Feedback Item component
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContext } from 'react';
 import FeedbackItem from './FeedbackItem';
-import PropTypes from 'prop-types';
+import FeedbackContext from '../context/FeedbackContext';
 
 // Feedback List component with a feedback prop
-function FeedbackList({ feedback, handleDelete }) {
+function FeedbackList({ handleDelete }) {
+	const { feedback } = useContext(FeedbackContext);
+
 	// Conditional to return a string if no feedback item is found
 	if (!feedback || feedback.length === 0) {
 		return <p>No Feedback Yet</p>;
@@ -43,16 +46,5 @@ function FeedbackList({ feedback, handleDelete }) {
 	// 	</div>
 	// );
 }
-
-// Set feedback list props typeof to be required
-FeedbackList.propTypes = {
-	feedback: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number.isRequired,
-			text: PropTypes.string.isRequired,
-			rating: PropTypes.number.isRequired,
-		})
-	),
-};
 
 export default FeedbackList;
